@@ -1,49 +1,57 @@
 import java.util.Scanner;
 
 public class Main {
-    private static int liczbaPszczolNaWejsciu;
-    private static int liczbaSzerszeniNaWejsciu;
-    private static double szerokoscLaki = 20;
 
-    public static void main(String[] args){
+    private static int liczbaPszczol;
+    private static int liczbaSzerszeni;
+    public int getLiczbaPszczol(){
+        return liczbaPszczol;
+    }
+    public void setLiczbaPszczol(int liczbaPszczol){
+        this.liczbaPszczol = liczbaPszczol;
+    }
 
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Podaj liczbe pszczol mniejsza od " + szerokoscLaki*szerokoscLaki + ": ");
-        liczbaPszczolNaWejsciu = scan.nextInt();
+    public int getLiczbaSzerszeni(){
+        return liczbaSzerszeni;
+    }
+    public void setLiczbaSzerszeni(int liczbaSzerszeni){
+        this.liczbaSzerszeni = liczbaSzerszeni;
+    }
 
-        while(liczbaPszczolNaWejsciu<=0 || liczbaPszczolNaWejsciu>=0.8*(szerokoscLaki*szerokoscLaki)){
-            if(liczbaPszczolNaWejsciu<=0){
-                System.out.println("Podana liczba jest nieprawidlowa, podaj dodatnia wartosc:");
+    public static void main(String[] args) {
+        Main object2 = new Main();
+        Laka object = new Laka();
+
+        boolean sprawdzam = false;
+        while(sprawdzam == false){
+            System.out.println("Podaj liczbę pszczół: ");
+            Scanner odczyt = new Scanner(System.in);
+            liczbaPszczol = odczyt.nextInt();
+            if(liczbaPszczol <0){
+                System.out.println("Liczba pszczół nie może być ujemna!");
             }
-            else
-                System.out.println("Podana liczba jest nieprawidlowa, podaj mniejsza liczbe:");
-
-            liczbaPszczolNaWejsciu = scan.nextInt();
+            else if (liczbaPszczol > (0.5*(object.getRozmiarLaki()*object.getRozmiarLaki()))) {
+                System.out.println("Liczba pszczół jest zbyt duża!\nPszczół może być maksymalnie "+(int)(0.5*(object.getRozmiarLaki()*object.getRozmiarLaki())));
+            }
+            else {
+                break;
+            }
         }
 
-        System.out.print("Podaj liczbe szerszeni mniejsza od " + (szerokoscLaki*szerokoscLaki-liczbaPszczolNaWejsciu) + ": ");
-        liczbaSzerszeniNaWejsciu = scan.nextInt();
-
-        while(liczbaSzerszeniNaWejsciu<=0 || liczbaSzerszeniNaWejsciu>=szerokoscLaki*szerokoscLaki-liczbaPszczolNaWejsciu){
-            if(liczbaSzerszeniNaWejsciu<=0){
-                System.out.println("Podana liczba jest nieprawidlowa, podaj dodatnia wartosc:");
+        while(sprawdzam == false){
+            System.out.println("Podaj liczbę szerszeni: ");
+            Scanner odczyt2 = new Scanner(System.in);
+            liczbaSzerszeni = odczyt2.nextInt();
+            if(liczbaSzerszeni <0){
+                System.out.println("Liczba szerszeni nie może być ujemna!");
             }
-            else
-                System.out.println("Podana liczba jest nieprawidlowa, podaj mniejsza liczbe:");
-
-            liczbaSzerszeniNaWejsciu = scan.nextInt();
+            else if (liczbaSzerszeni > ((object.getRozmiarLaki()*object.getRozmiarLaki())- liczbaPszczol-1)) {
+                System.out.println("Liczba szerszeni jest zbyt duża!\nSzerszeni może być maksymalnie "+(int)((object.getRozmiarLaki()*object.getRozmiarLaki())-liczbaPszczol-1));
+            }
+            else {
+                sprawdzam = true;
+            }
         }
-    }
-
-    public int getLiczbaPszczolNaWejsciu() {
-        return liczbaPszczolNaWejsciu;
-    }
-
-    public int getLiczbaSzerszeniNaWejsciu() {
-        return liczbaSzerszeniNaWejsciu;
-    }
-
-    public void wyswietlLake(){
 
     }
 }
