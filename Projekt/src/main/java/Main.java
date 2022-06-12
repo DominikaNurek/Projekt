@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     private static int liczbaPszczol;
     private static int liczbaSzerszeni;
     public int getLiczbaPszczol(){

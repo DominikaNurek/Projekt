@@ -1,5 +1,6 @@
 public class Szerszen extends Owad{
-    private Szerszen(){
+
+    public Szerszen(){
         this.szybkoscPoruszania = 1;
     }
 }
